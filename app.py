@@ -15,19 +15,23 @@ def exibir_nome_do_app():
 """)
 
 def exibir_menu():
+    ''' Essa função exibe o menu do aplicativo. '''
     print('1. Cadastrar Restaurante')
     print('2. Listar Restaurante')
     print('3. Alternar Status do Restaurante')
     print('4. Sair\n')
 
 def finalizar_app():
+    ''' Essa função encerra o programa. '''
     os.system('cls')
     print('Encerrando o programa...\n')
 
 def opcao_invalida():
+    ''' Essa função exibe uma mensagem de erro caso o usuário digite uma opção inválida no menu. '''
     print('Opção inválida!\n')
 
 def cadastrar_restaurante():
+    ''' Essa função cadastra um restaurante, recebendo o nome e a categoria do mesmo. O status do restaurante é definido como desativado por padrão. '''
     os.system('cls')
     print('Cadastrar Restaurante\n')
     nome_restaurante = input('Digite o nome do restaurante: ')
@@ -37,15 +41,19 @@ def cadastrar_restaurante():
     print(f'Restaurante {nome_restaurante} cadastrado com sucesso!\n')
 
 def listar_restaurantes():
+    ''' Essa função lista todos os restaurantes cadastrados, exibindo o nome, a categoria e o status de cada um. '''
     os.system('cls')
     print('Lista de Restaurantes\n')
+
+    print(f'{"Nome do Restaurante".ljust(22)} | {"Categoria".ljust(20)} | Status')
     for restaurante in restaurantes:
         nome_restaurante = restaurante['nome']
         categoria = restaurante['categoria']
         ativo = 'Ativado' if restaurante['ativo'] else 'Desativado'
-        print(f'- {nome_restaurante} | {categoria} | {ativo}')
+        print(f'- {nome_restaurante.ljust(20)} | {categoria.ljust(20)} | {ativo}')
 
 def alternar_status_restaurante():
+    ''' Essa função alterna o status de um restaurante, ativando-o caso esteja desativado e desativando-o caso esteja ativado. '''
     os.system('cls')
     print('Alternar Status do Restaurante\n')
     nome_restaurante = input('Digite o nome do restaurante que deseja alternar o status: ')
@@ -61,6 +69,7 @@ def alternar_status_restaurante():
         print(f'O restaurante {nome_restaurante} não foi encontrado!\n')
 
 def escolher_opcao():
+    ''' Essa função permite que o usuário escolha uma opção do menu. '''
     try:
         opcao_escolhida = int(input('Escolha uma opção: '))
 
@@ -81,6 +90,7 @@ def escolher_opcao():
     return False
 
 def main():
+    ''' Função principal do programa. '''
     while True:
         os.system('cls')
         exibir_nome_do_app()
